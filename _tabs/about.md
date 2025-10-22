@@ -30,5 +30,5 @@ The main purpose of this website is to post my notes from school and any self le
 
 ## 	📁 &nbsp; Documents 
 
-[Resume](/assets/documents/resume.pdf){:target="_blank"}   
-[MSCS Transcript](/assets/documents/omscs-transcript.pdf){:target="_blank"}
+[Resume](/assets/doc/resume.pdf){:target="_blank"}   
+[MSCS Transcript](/assets/doc/omscs-transcript.pdf){:target="_blank"}
