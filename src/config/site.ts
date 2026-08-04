@@ -5,7 +5,7 @@ export const siteConfig = {
   shortName: 'nrtedesco',
   description: 'Portfolio website built on astro-narrow.',
   author: {
-    name: 'Astro Narrow',
+    name: 'Nicholas Tedesco',
     title: {
       en: 'A clean and minimal Astro theme',
       'zh-cn': '一个干净克制的 Astro 主题'
@@ -17,8 +17,7 @@ export const siteConfig = {
     avatar: '/favicon.svg',
     social: [
       { name: 'GitHub', url: 'https://github.com/nrtedesco', icon: 'simple-icons:github' },
-      { name: 'LinkedIn', url: 'https://www.linkedin.com/in/nicholas-r-tedesco/', icon: 'simple-icons:linkedin' },
-      { name: 'Email', url: 'mailto:hello@example.com', icon: 'lucide:mail' }
+      { name: 'LinkedIn', url: 'https://www.linkedin.com/in/nicholas-r-tedesco/', icon: 'simple-icons:linkedin' }
     ]
   },
   contentWidth: '56rem',

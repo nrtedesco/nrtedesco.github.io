@@ -25,7 +25,7 @@ export const contentTypes = {
     listLayout: 'stack',
     gridColumns: 1,
     home: {
-      enabled: true,
+      enabled: false,
       limit: 5,
       title: {
         en: 'Recent Posts',
@@ -46,7 +46,7 @@ export const contentTypes = {
     listLayout: 'grid',
     gridColumns: 3,
     home: {
-      enabled: true,
+      enabled: false,
       limit: 3,
       featuredOnly: true,
       title: {
