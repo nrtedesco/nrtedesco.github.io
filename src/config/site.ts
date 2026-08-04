@@ -1,9 +1,9 @@
 import type { Locale } from './i18n';
 
 export const siteConfig = {
-  name: 'Astro Narrow',
-  shortName: 'Astro Narrow',
-  description: 'A content-focused Astro theme inspired by Hugo Narrow.',
+  name: 'nrtedesco',
+  shortName: 'nrtedesco',
+  description: 'Portfolio website built on astro-narrow.',
   author: {
     name: 'Astro Narrow',
     title: {
