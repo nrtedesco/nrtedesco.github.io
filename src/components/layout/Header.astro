@@ -25,9 +25,10 @@ function isActive(href: string) {
   <div class="nav-shell flex min-h-16 items-center justify-between gap-3 border px-4 shadow-[var(--surface-shadow)]">
     <a href={getLocalePath(locale, '/')} class="flex min-w-0 items-center gap-2 font-semibold">
       <span class="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-primary text-primary-foreground">
-        {siteConfig.name.slice(0, 1)}
+        <Icon name="lucide:terminal" class="h-4 w-4" aria-hidden="true" />
       </span>
-      <span class="truncate">{siteConfig.name}</span>
+      <span class="min-w-0 truncate">{siteConfig.name}</span>
+      <span class="vim-cursor shrink-0" aria-hidden="true"></span>
     </a>
 
     <nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
@@ -65,3 +66,31 @@ function isActive(href: string) {
     ))}
   </nav>
 </header>
+
+<style>
+  .vim-cursor {
+    display: block;
+    width: 0.55em;
+    height: 1em;
+    background-color: #4682B4;
+    animation: vim-cursor-blink 1s step-end infinite;
+  }
+
+  @keyframes vim-cursor-blink {
+    0%,
+    49% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vim-cursor {
+      animation: none;
+      opacity: 1;
+    }
+  }
+</style>
