@@ -16,7 +16,8 @@ export const siteConfig = {
     },
     avatar: '/favicon.svg',
     social: [
-      { name: 'GitHub', url: 'https://github.com/', icon: 'simple-icons:github' },
+      { name: 'GitHub', url: 'https://github.com/nrtedesco', icon: 'simple-icons:github' },
+      { name: 'LinkedIn', url: 'https://www.linkedin.com/in/nicholas-r-tedesco/', icon: 'simple-icons:linkedin' },
       { name: 'Email', url: 'mailto:hello@example.com', icon: 'lucide:mail' }
     ]
   },

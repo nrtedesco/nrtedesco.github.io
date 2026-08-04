@@ -15,6 +15,11 @@ const currentPath = Astro.url.pathname;
 const t = useTranslations(locale);
 const headerClass = siteConfig.ui.navbar.sticky ? 'sticky top-5' : 'relative';
 
+const headerSocial = siteConfig.author.social.filter((item) => item.name === 'GitHub' || item.name === 'LinkedIn');
+
+const socialLinkClass =
+  'grid h-9 w-9 place-items-center rounded-[var(--radius-control)] text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground';
+
 function isActive(href: string) {
   if (href === '/') return currentPath === href;
   return currentPath === href || currentPath.startsWith(href);
@@ -52,6 +57,23 @@ function isActive(href: string) {
       <button type="button" data-search-open class="grid h-9 w-9 place-items-center rounded-[var(--radius-control)] text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground" aria-label={t('nav.search')} title={t('nav.search')}>
         <Icon name="lucide:search" class="h-4 w-4" />
       </button>
+      {headerSocial.length > 0 && (
+        <>
+          <span class="mx-2.5 h-6 w-px shrink-0 bg-border" aria-hidden="true"></span>
+          {headerSocial.map((item) => (
+            <a
+              class={socialLinkClass}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={item.name}
+              title={item.name}
+            >
+              <Icon name={item.icon} class="h-4 w-4" />
+            </a>
+          ))}
+        </>
+      )}
       <button type="button" data-mobile-menu aria-expanded="false" class="grid h-9 w-9 place-items-center rounded-[var(--radius-control)] transition-colors hover:bg-accent md:hidden" aria-label={t('nav.menu')}>
         <Icon name="lucide:menu" class="h-4 w-4" />
       </button>
