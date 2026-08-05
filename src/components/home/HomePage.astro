@@ -161,28 +161,91 @@ const pinnedItems = await getHomePins(locale);
 <script>
   // Longer than browser default, but ease-out keeps the first response snappy.
   const SCROLL_DURATION_MS = 1200;
+  const SCROLLING_CLASS = 'is-programmatic-scroll';
+
+  let scrollFrame = 0;
+  let expectedScrollY = 0;
+  let ignoreScrollEvent = false;
 
   function easeOutCubic(t: number) {
     return 1 - (1 - t) ** 3;
   }
 
+  function stopScrollAnimation() {
+    if (scrollFrame) {
+      cancelAnimationFrame(scrollFrame);
+      scrollFrame = 0;
+    }
+    document.documentElement.classList.remove(SCROLLING_CLASS);
+  }
+
+  function onUserScrollInterrupt() {
+    if (!scrollFrame) return;
+    stopScrollAnimation();
+  }
+
+  // Yield immediately when the user takes over scrolling.
+  window.addEventListener('wheel', onUserScrollInterrupt, { passive: true });
+  window.addEventListener('touchstart', onUserScrollInterrupt, { passive: true });
+  window.addEventListener('keydown', (event) => {
+    const keys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ', 'Spacebar'];
+    if (keys.includes(event.key)) onUserScrollInterrupt();
+  });
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!scrollFrame || ignoreScrollEvent) return;
+      // Scrollbar drag / trackpad leftovers that diverge from the animated path.
+      if (Math.abs((window.scrollY || window.pageYOffset) - expectedScrollY) > 2) {
+        onUserScrollInterrupt();
+      }
+    },
+    { passive: true }
+  );
+
   function scrollToTarget(target: HTMLElement, duration: number) {
-    const start = window.scrollY;
+    stopScrollAnimation();
+
+    const start = window.scrollY || window.pageYOffset;
     const margin = Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
-    const end = target.getBoundingClientRect().top + window.scrollY - margin;
+    const end = Math.max(0, target.getBoundingClientRect().top + start - margin);
     const distance = end - start;
     if (Math.abs(distance) < 1) return;
+
+    // Prevent CSS scroll-behavior: smooth from fighting each rAF step.
+    document.documentElement.classList.add(SCROLLING_CLASS);
+    expectedScrollY = start;
 
     let startTime: number | null = null;
 
     const step = (timestamp: number) => {
       if (startTime === null) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      window.scrollTo(0, start + distance * easeOutCubic(progress));
-      if (progress < 1) requestAnimationFrame(step);
+      const nextY = start + distance * easeOutCubic(progress);
+
+      expectedScrollY = nextY;
+      ignoreScrollEvent = true;
+      window.scrollTo({ top: nextY, left: 0, behavior: 'auto' });
+      ignoreScrollEvent = false;
+
+      if (progress < 1) {
+        scrollFrame = requestAnimationFrame(step);
+      } else {
+        scrollFrame = 0;
+        // Snap to the exact target in case of sub-pixel drift / layout shift.
+        const settled = Math.max(
+          0,
+          target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - margin
+        );
+        expectedScrollY = settled;
+        ignoreScrollEvent = true;
+        window.scrollTo({ top: settled, left: 0, behavior: 'auto' });
+        ignoreScrollEvent = false;
+        document.documentElement.classList.remove(SCROLLING_CLASS);
+      }
     };
 
-    requestAnimationFrame(step);
+    scrollFrame = requestAnimationFrame(step);
   }
 
   document.querySelectorAll<HTMLAnchorElement>('[data-home-scroll-next]').forEach((link) => {
@@ -196,7 +259,10 @@ const pinnedItems = await getHomePins(locale);
       event.preventDefault();
 
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        target.scrollIntoView();
+        stopScrollAnimation();
+        document.documentElement.classList.add(SCROLLING_CLASS);
+        target.scrollIntoView({ behavior: 'auto', block: 'start' });
+        document.documentElement.classList.remove(SCROLLING_CLASS);
       } else {
         scrollToTarget(target, SCROLL_DURATION_MS);
       }
