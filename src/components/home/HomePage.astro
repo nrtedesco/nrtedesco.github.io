@@ -7,6 +7,35 @@ import { siteConfig } from '../../config/site';
 import EntryList from '../content/EntryList.astro';
 import ViewAll from '../ui/ViewAll.astro';
 import IntroRoundabout from '../content/IntroRoundabout.astro'; 
+import { TimelineLayout } from '../content/timeline-layout'; 
+
+const timelineData = [
+  {
+    title: "Neurobio Research Assistant",
+    date: "2019 - 2020",
+    description: "Performed hierarchical clustering of gene expression data. First exposures to Python and ML.",
+    color: "primary"
+  },
+  {
+    title: "Biostatistician / Analyst",
+    date: "2021 - 2023",
+    description: "Applied multi-level modeling in R to evaluate proximity to fracking as a predictor of adverse maternal health outcomes.",
+    color: "primary"
+  },
+  {
+    title: "Data Scientist I",
+    date: "2023 - 2024",
+    description: "Built predictive models and ETL pipelines to identify clinical predictors of liver-related outcomes.",
+    color: "primary"
+  },
+  {
+    title: "Data Scientist II",
+    date: "2024 - Present",
+    description: "Implemented end-to-end ML systems to facilitate efficient business operations regarding Medicare Advantage sales.",
+    color: "secondary"
+  }
+
+];
 
 interface HomeSection {
   id: ContentTypeId;
@@ -36,6 +65,21 @@ const { author } = siteConfig;
           <span class="text-muted-foreground">.</span>
         </h1>
         <IntroRoundabout/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-8 sm:py-10">
+  <div class="profile-card surface-card px-7 py-5 sm:px-8 sm:py-6">
+    <div class="flex flex-col items-center gap-6 text-center md:flex-row md:items-start md:text-left">
+      <div class="min-w-0 flex-1">
+        <h1 class="text-2xl tracking-tight ">
+          <span class="text-muted-foreground">I have experience applying </span>
+          <span class="font-bold">Machine Learning</span>
+          <span class="text-muted-foreground"> across many different domains.</span>
+        </h1>
+        <TimelineLayout client:load items={timelineData} className="pt-16 pr-12 md:pr-32"/>
       </div>
     </div>
   </div>

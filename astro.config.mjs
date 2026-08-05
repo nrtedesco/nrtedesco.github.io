@@ -16,6 +16,8 @@ import { rehypeAlerts } from './src/lib/markdown/rehype-alerts.mjs';
 import { rehypeImageGroups } from './src/lib/markdown/rehype-image-groups.mjs';
 import { rehypeMermaid } from './src/lib/markdown/rehype-mermaid.mjs';
 
+import react from '@astrojs/react';
+
 const site = process.env.ASTRO_SITE;
 const base = process.env.ASTRO_BASE;
 
@@ -31,7 +33,7 @@ export default defineConfig({
       redirectToDefaultLocale: false
     }
   },
-  integrations: [icon(), expressiveCode(ecConfig)],
+  integrations: [icon(), expressiveCode(ecConfig), react()],
   markdown: {
     processor: unified({
       remarkPlugins: [remarkMath, remarkDirective, remarkTabs],
