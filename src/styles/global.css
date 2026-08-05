@@ -120,8 +120,9 @@ a {
 
 .nav-shell {
   border-radius: var(--radius-card);
-  background: color-mix(in oklch, var(--color-background), transparent 8%);
-  backdrop-filter: blur(16px);
+  background: color-mix(in oklch, var(--color-background), transparent 28%);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
 }
 
 .footer-nav-link {
