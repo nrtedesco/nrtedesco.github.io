@@ -13,7 +13,7 @@ const { locale } = Astro.props;
 const navigation = getFooterNavigation(locale);
 ---
 
-<footer class="mt-8 py-8 text-sm text-muted-foreground">
+<footer class="mt-10 pt-6 pb-8 text-sm text-muted-foreground">
   {navigation.length > 0 && (
     <nav class="mb-6" aria-label="Footer">
       <div class="flex flex-wrap items-center justify-center gap-1">

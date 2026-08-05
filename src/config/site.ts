@@ -27,11 +27,11 @@ export const siteConfig = {
       sticky: true
     },
     dock: {
-      enabled: true
+      enabled: false
     }
   },
   nav: ['posts', 'series', 'projects', 'archives'],
-  footerNav: ['archives'],
+  footerNav: [],
   comments: {
     enabled: false,
     provider: 'giscus',

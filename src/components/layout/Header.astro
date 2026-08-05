@@ -4,6 +4,7 @@ import { getLocalePath, type Locale } from '../../config/i18n';
 import { getNavigation } from '../../config/navigation';
 import { siteConfig } from '../../config/site';
 import { useTranslations } from '../../i18n/utils';
+import DisplaySettings from '../ui/DisplaySettings.astro';
 
 interface Props {
   locale: Locale;
@@ -63,6 +64,7 @@ function resolveSocialUrl(url: string) {
     </nav>
 
     <div class="flex shrink-0 items-center gap-1">
+      <DisplaySettings locale={locale} />
       <button type="button" data-search-open class="grid h-9 w-9 place-items-center rounded-[var(--radius-control)] text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground" aria-label={t('nav.search')} title={t('nav.search')}>
         <Icon name="lucide:search" class="h-4 w-4" />
       </button>

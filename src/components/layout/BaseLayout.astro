@@ -4,7 +4,6 @@ import { localeMeta, type Locale } from '../../config/i18n';
 import { siteConfig } from '../../config/site';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
-import Dock from '../ui/Dock.astro';
 import SearchModal from '../features/SearchModal.astro';
 import Toc from '../features/Toc.astro';
 import Comments from '../features/Comments.astro';
@@ -46,11 +45,7 @@ const themeInit = `
   try {
     const theme = localStorage.getItem('theme') || 'default';
     const mode = localStorage.getItem('color-mode');
-    const contentWidth = localStorage.getItem('content-width');
     root.dataset.theme = theme;
-    if (contentWidth && /^\\d+(?:\\.\\d+)?rem$/.test(contentWidth)) {
-      root.style.setProperty('--layout-content-width', contentWidth);
-    }
     if (mode === 'dark' || (!mode && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       root.classList.add('dark');
     }
@@ -81,18 +76,15 @@ const themeInit = `
       <Footer locale={locale} />
     </main>
     {toc && headings.length > 0 && <Toc headings={headings} position={toc === true ? 'center' : toc} />}
-    {siteConfig.ui.dock.enabled && <Dock locale={locale} />}
     <SearchModal locale={locale} />
     <GalleryLightbox locale={locale} />
     <Analytics />
     <script>
       import '../../scripts/theme-controls.ts';
-      import '../../scripts/reading-progress.ts';
       import '../../scripts/search.ts';
       import '../../scripts/toc.ts';
       import '../../scripts/gallery.ts';
       import '../../scripts/mermaid.ts';
-      import '../../scripts/dock.ts';
       import '../../scripts/tabs.ts';
     </script>
   </body>

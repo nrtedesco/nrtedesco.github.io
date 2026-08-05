@@ -1,0 +1,81 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { Locale } from '../../config/i18n';
+import { themes } from '../../config/theme';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const labels = {
+  display: t('dock.display'),
+  displayClose: t('dock.display.close'),
+  theme: t('nav.theme'),
+  colorMode: t('nav.colorMode')
+};
+
+const triggerClass =
+  'grid h-9 w-9 place-items-center rounded-[var(--radius-control)] text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground';
+---
+
+<div class="relative z-10">
+  <button
+    type="button"
+    data-display-menu
+    aria-expanded="false"
+    class={triggerClass}
+    aria-label={labels.display}
+    title={labels.display}
+  >
+    <Icon name="lucide:settings-2" class="h-4 w-4" />
+  </button>
+  <div
+    data-display-panel
+    class="absolute top-full right-0 z-50 mt-2 hidden w-[min(20rem,calc(100vw-2rem))] rounded-[var(--radius-panel)] border border-border bg-popover p-3 text-sm shadow-xl"
+    aria-label={labels.display}
+  >
+    <div class="mb-3 flex items-center justify-between gap-3">
+      <span class="font-semibold">{labels.display}</span>
+      <button
+        type="button"
+        data-display-close
+        class="grid h-7 w-7 cursor-pointer place-items-center rounded-[var(--radius-control)] text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        aria-label={labels.displayClose}
+      >
+        <Icon name="lucide:x" class="h-4 w-4" />
+      </button>
+    </div>
+
+    <div class="space-y-1">
+      <span class="text-xs font-medium text-muted-foreground">{labels.theme}</span>
+      <div class="grid grid-cols-2 gap-1">
+        {themes.map((theme) => (
+          <button
+            type="button"
+            data-theme-value={theme.id}
+            aria-pressed={theme.id === 'default' ? 'true' : 'false'}
+            class="flex cursor-pointer items-center justify-between gap-2 rounded-[var(--radius-control)] px-2 py-1.5 text-left transition-colors hover:bg-accent hover:text-accent-foreground aria-pressed:bg-primary aria-pressed:text-primary-foreground aria-pressed:hover:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            <span>{theme.name}</span>
+            <Icon data-theme-indicator name="lucide:check" class:list={['h-3.5 w-3.5', theme.id === 'default' ? '' : 'hidden']} />
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="my-3 h-px bg-border" aria-hidden="true"></div>
+
+    <button
+      type="button"
+      data-color-mode
+      aria-pressed="false"
+      class="flex w-full cursor-pointer items-center justify-between rounded-[var(--radius-control)] px-2 py-2 transition-colors hover:bg-accent hover:text-accent-foreground aria-pressed:bg-primary aria-pressed:text-primary-foreground aria-pressed:hover:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+    >
+      <span>{labels.colorMode}</span>
+      <Icon name="lucide:sun-moon" class="h-4 w-4" />
+    </button>
+  </div>
+</div>

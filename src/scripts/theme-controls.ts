@@ -46,18 +46,14 @@ document.addEventListener('click', (event) => {
   const target = event.target as HTMLElement;
 
   const displayButton = target.closest<HTMLElement>('[data-display-menu]');
-  const langButton = target.closest('[data-lang-menu]');
   const mobileButton = target.closest('[data-mobile-menu]');
   const displayPanel = document.querySelector<HTMLElement>('[data-display-panel]');
-  const langPanel = document.querySelector<HTMLElement>('[data-lang-panel]');
   const mobilePanel = document.querySelector<HTMLElement>('[data-mobile-panel]');
-  const langMenu = document.querySelector<HTMLElement>('[data-lang-menu]');
   const mobileMenu = document.querySelector<HTMLElement>('[data-mobile-menu]');
 
   if (displayButton) {
     const willOpen = displayPanel?.classList.contains('hidden') ?? false;
     setPanel(displayPanel, displayButton, willOpen);
-    setPanel(langPanel, langMenu, false);
     setPanel(mobilePanel, mobileMenu, false);
     return;
   }
@@ -67,19 +63,10 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  if (langButton) {
-    const willOpen = langPanel?.classList.contains('hidden') ?? false;
-    setPanel(langPanel, langMenu, willOpen);
-    setPanel(displayPanel, document.querySelector('[data-display-menu]'), false);
-    setPanel(mobilePanel, mobileMenu, false);
-    return;
-  }
-
   if (mobileButton) {
     const willOpen = mobilePanel?.classList.contains('hidden') ?? false;
     setPanel(mobilePanel, mobileMenu, willOpen);
     setPanel(displayPanel, document.querySelector('[data-display-menu]'), false);
-    setPanel(langPanel, langMenu, false);
     return;
   }
 
@@ -101,14 +88,12 @@ document.addEventListener('click', (event) => {
   }
 
   if (!target.closest('[data-display-panel]')) setPanel(displayPanel, document.querySelector('[data-display-menu]'), false);
-  if (!target.closest('[data-lang-panel]')) setPanel(langPanel, langMenu, false);
   if (!target.closest('[data-mobile-panel]')) setPanel(mobilePanel, mobileMenu, false);
 });
 
 document.addEventListener('keydown', (event) => {
   if (event.key !== 'Escape') return;
   setPanel(document.querySelector('[data-display-panel]'), document.querySelector('[data-display-menu]'), false);
-  setPanel(document.querySelector('[data-lang-panel]'), document.querySelector('[data-lang-menu]'), false);
   setPanel(document.querySelector('[data-mobile-panel]'), document.querySelector('[data-mobile-menu]'), false);
 });
 
