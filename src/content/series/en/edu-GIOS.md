@@ -20,5 +20,3 @@ chapters:
   - en/edu-gios-m16
 cover: "/img/posts/edu-GIOS/pasted-image-20251201094156.png"
 ---
-
-Notes and walkthroughs from CS 6200 at Georgia Tech, organized module by module.
