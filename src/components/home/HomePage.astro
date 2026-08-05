@@ -4,9 +4,10 @@ import type { CollectionEntry } from 'astro:content';
 import type { Locale } from '../../config/i18n';
 import type { ContentTypeId } from '../../config/content';
 import { siteConfig } from '../../config/site';
+import { useTranslations } from '../../i18n/utils';
 import EntryList from '../content/EntryList.astro';
 import ViewAll from '../ui/ViewAll.astro';
-import IntroRoundabout from '../content/IntroRoundabout.astro'; 
+import IntroRoundabout from '../content/IntroRoundabout.astro';
 import { TimelineLayout } from '../content/timeline-layout'; 
 
 const timelineData = [
@@ -51,6 +52,7 @@ interface Props {
 
 const { locale, sections } = Astro.props;
 const { author } = siteConfig;
+const t = useTranslations(locale);
 ---
 
 <section class="py-8 sm:py-10">
@@ -68,9 +70,21 @@ const { author } = siteConfig;
       </div>
     </div>
   </div>
+
+  <div class="mt-6 flex justify-center">
+    <a
+      href="#home-experience"
+      data-home-scroll-next
+      class="home-scroll-next grid h-10 w-10 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      aria-label={t('home.scrollNext')}
+      title={t('home.scrollNext')}
+    >
+      <Icon name="lucide:chevron-down" class="h-6 w-6" />
+    </a>
+  </div>
 </section>
 
-<section class="py-8 sm:py-10">
+<section id="home-experience" class="home-section-target py-8 sm:py-10">
   <div class="profile-card surface-card px-7 py-5 sm:px-8 sm:py-6">
     <div class="flex flex-col items-center gap-6 text-center md:flex-row md:items-start md:text-left">
       <div class="min-w-0 flex-1">
@@ -84,6 +98,80 @@ const { author } = siteConfig;
     </div>
   </div>
 </section>
+
+<style>
+  .home-section-target {
+    scroll-margin-top: 6rem;
+  }
+
+  .home-scroll-next {
+    animation: home-scroll-bounce 1.8s ease-in-out infinite;
+  }
+
+  @keyframes home-scroll-bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(0.28rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-scroll-next {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  // Longer than browser default, but ease-out keeps the first response snappy.
+  const SCROLL_DURATION_MS = 1200;
+
+  function easeOutCubic(t: number) {
+    return 1 - (1 - t) ** 3;
+  }
+
+  function scrollToTarget(target: HTMLElement, duration: number) {
+    const start = window.scrollY;
+    const margin = Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+    const end = target.getBoundingClientRect().top + window.scrollY - margin;
+    const distance = end - start;
+    if (Math.abs(distance) < 1) return;
+
+    let startTime: number | null = null;
+
+    const step = (timestamp: number) => {
+      if (startTime === null) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      window.scrollTo(0, start + distance * easeOutCubic(progress));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  }
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-home-scroll-next]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const href = link.getAttribute('href');
+      if (!href?.startsWith('#')) return;
+
+      const target = document.querySelector<HTMLElement>(href);
+      if (!target) return;
+
+      event.preventDefault();
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        target.scrollIntoView();
+      } else {
+        scrollToTarget(target, SCROLL_DURATION_MS);
+      }
+
+      history.pushState(null, '', href);
+    });
+  });
+</script>
 
 {sections.map((section) => (
   section.entries.length > 0 && (
