@@ -1,6 +1,7 @@
 export type TimelineElement = {
     id?: string | number;
     title?: string;
+    company?: string;
     date?: string;
     description?: string;
     status?: 'completed' | 'in-progress' | 'pending' | 'error';

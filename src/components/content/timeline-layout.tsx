@@ -40,6 +40,7 @@ export const TimelineLayout = ({
           <TimelineItem
             date={item.date}
             title={item.title}
+            company={item.company}
             description={item.description}
             icon={typeof item.icon === 'function' ? item.icon() : item.icon || customIcon}
             iconColor={item.color || iconColor}

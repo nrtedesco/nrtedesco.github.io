@@ -86,6 +86,8 @@ interface TimelineItemProps extends Omit<HTMLMotionProps<'li'>, 'ref'> {
   date?: string;
   /** Title of the timeline item */
   title?: string;
+  /** Employer / company name */
+  company?: string;
   /** Description text */
   description?: string;
   /** Custom icon element */
@@ -112,6 +114,7 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
       className,
       date,
       title,
+      company,
       description,
       icon,
       iconColor,
@@ -207,30 +210,45 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
 
     const content = (
       <div
-        className="grid grid-cols-[1fr_auto_1fr] gap-4 items-start"
+        className="grid grid-cols-[1fr_auto_1fr] items-stretch gap-4"
         {...(status === 'in-progress' ? { 'aria-current': 'step' } : {})}
       >
         {/* Date */}
         <div className="flex flex-col justify-start pt-1">
-          <TimelineTime className="text-right pr-4">{date}</TimelineTime>
+          <TimelineTime className="pr-4 text-right">{date}</TimelineTime>
         </div>
 
         {/* Timeline dot and connector */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center self-stretch">
           <div className="relative z-10">
             <TimelineIcon icon={icon} color={iconColor} status={status} iconSize={iconsize} />
           </div>
-          {showConnector && (
-            <div className="h-16 w-0.5 bg-border mt-2" />
-          )}
+          {showConnector && <div className="mt-2 min-h-10 w-0.5 flex-1 bg-border" />}
         </div>
 
         {/* Content */}
         <TimelineContent>
-          <TimelineHeader>
-            <TimelineTitle>{title}</TimelineTitle>
-          </TimelineHeader>
-          <TimelineDescription>{description}</TimelineDescription>
+          <div className="flex flex-col gap-1">
+            <TimelineHeader>
+              <TimelineTitle>{title}</TimelineTitle>
+            </TimelineHeader>
+            {company && (
+              <p className="text-sm text-muted-foreground">{company}</p>
+            )}
+          </div>
+          {description && (
+            <TimelineDescription
+              className={cn(
+                // Keep layout height reserved so the parent card does not resize on hover.
+                'transition-opacity duration-300 ease-out',
+                'opacity-100',
+                '[@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100',
+                'motion-reduce:transition-none',
+              )}
+            >
+              {description}
+            </TimelineDescription>
+          )}
         </TimelineContent>
       </div>
     );
@@ -265,7 +283,16 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
     } = props;
 
     return (
-      <li ref={ref} className={commonClassName} {...filteredProps}>
+      <li
+        ref={ref}
+        className={cn(
+          commonClassName,
+          'group cursor-default origin-center transition-transform duration-200 ease-out',
+          '[@media(hover:hover)]:hover:scale-[1.03]',
+          'motion-reduce:transition-none motion-reduce:hover:scale-100',
+        )}
+        {...filteredProps}
+      >
         {content}
       </li>
     );
@@ -400,8 +427,11 @@ const TimelineIcon = ({
     <div
       className={cn(
         'relative flex items-center justify-center rounded-full ring-8 ring-background shadow-sm',
+        'transition-colors duration-200 ease-out',
         sizeClasses[iconSize],
         colorClasses[color],
+        // Match header vim cursor steel blue on timeline item hover.
+        '[@media(hover:hover)]:group-hover:bg-[#4682B4] [@media(hover:hover)]:group-hover:text-white',
       )}
     >
       {icon ? (
