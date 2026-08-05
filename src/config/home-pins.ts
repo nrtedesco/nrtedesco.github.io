@@ -28,10 +28,9 @@ function defineHomePins<const T extends readonly HomePin[]>(pins: T & (T['length
 }
 
 export const homePins = defineHomePins([
-  { type: 'posts', slug: 'chess-scandinavian' },
-  { type: 'posts', slug: 'outdoors-loyalsock' },
-  { type: 'posts', slug: 'outdoors-acadia' },
-  { type: 'posts', slug: 'chess-vienna' },
-  { type: 'posts', slug: 'configure-series' },
-  { type: 'posts', slug: 'deploy-github-pages' }
+  { type: 'posts',  slug: 'chess-scandinavian' },
+  { type: 'posts',  slug: 'outdoors-loyalsock' },
+  { type: 'series', slug: 'edu-gios' },
+  { type: 'posts',  slug: 'outdoors-acadia' },
+  { type: 'posts',  slug: 'chess-vienna' }
 ]);

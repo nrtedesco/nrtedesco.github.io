@@ -55,6 +55,7 @@ const series = defineCollection({
     title: z.string(),
     description: z.string().optional(),
     draft: z.boolean().default(false),
+    cover: z.string().optional(),
     lang: z.enum(['en']).optional(),
     chapters: z.array(reference('posts')).min(2)
   })

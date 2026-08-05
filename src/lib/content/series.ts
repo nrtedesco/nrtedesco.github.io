@@ -39,7 +39,17 @@ async function resolvePublishedSeries() {
     const locale = seriesLocale(entry);
     const chapterIds = new Set<string>();
 
-    for (const chapter of chapters) {
+    for (let index = 0; index < chapters.length; index += 1) {
+      const chapter = chapters[index];
+      const referenceId = entry.data.chapters[index]?.id ?? `chapters[${index}]`;
+
+      if (!chapter) {
+        throw new Error(
+          `Series "${entry.id}" references missing post "${referenceId}". ` +
+            `Content Collection IDs are lowercase — use e.g. "en/edu-gios-m1", not mixed case.`
+        );
+      }
+
       if (chapterIds.has(chapter.id)) {
         throw new Error(`Series "${entry.id}" references post "${chapter.id}" more than once.`);
       }

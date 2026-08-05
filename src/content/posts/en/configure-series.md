@@ -28,6 +28,8 @@ chapters:
 
 The position in `chapters` is the chapter order. Reordering the array changes the reading path without renaming post files or changing their public URLs.
 
+Chapter IDs must match the Content Collection ID, which Astro lowercases. For a file like `edu-GIOS-M1.md`, reference `en/edu-gios-m1` (not `en/edu-GIOS-M1`).
+
 ## Keep relationships in one place
 
 Posts do not repeat a series name or chapter number in their own frontmatter. This avoids conflicting order values and spelling differences between entries. Astro's `reference('posts')` schema also prevents projects or pages from being used as chapters.

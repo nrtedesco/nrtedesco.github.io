@@ -52,10 +52,13 @@ function findBySlug<T extends { id: string }>(
   slug: string,
   getSlug: (item: T) => string
 ) {
-  return items.find((item) => getSlug(item) === slug);
+  // Astro Content Collection IDs are lowercased; accept mixed-case pin slugs.
+  const normalized = slug.toLowerCase();
+  return items.find((item) => getSlug(item).toLowerCase() === normalized);
 }
 
 function seriesCover(series: ResolvedSeries) {
+  if (series.entry.data.cover) return series.entry.data.cover;
   for (const chapter of series.chapters) {
     if (chapter.data.cover) return chapter.data.cover;
   }
