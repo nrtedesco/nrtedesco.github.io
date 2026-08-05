@@ -13,8 +13,8 @@ interface Props {
   locale: Locale;
 }
 
-const { items, locale } = Astro.props;
-const ariaLabel = locale === 'zh-cn' ? '面包屑导航' : 'Breadcrumb';
+const { items } = Astro.props;
+const ariaLabel = 'Breadcrumb';
 ---
 
 {items.length > 0 && (

@@ -7,12 +7,10 @@ export const siteConfig = {
   author: {
     name: 'Nicholas Tedesco',
     title: {
-      en: 'A clean and minimal Astro theme',
-      'zh-cn': '一个干净克制的 Astro 主题'
+      en: 'A clean and minimal Astro theme'
     },
     description: {
-      en: 'Writing, projects, and notes — a compact space for ideas that keep their shape.',
-      'zh-cn': '写作、项目与笔记 —— 一个保持克制、注重结构感的内容空间。'
+      en: 'Writing, projects, and notes — a compact space for ideas that keep their shape.'
     },
     avatar: '/favicon.svg',
     social: [

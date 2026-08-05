@@ -35,7 +35,7 @@ Run the same path-sensitive build before pushing:
 ASTRO_SITE=https://example.github.io ASTRO_BASE=/astro-narrow/ pnpm build
 ```
 
-After it succeeds, inspect `dist/sitemap.xml` and one generated content page. URLs should include `/astro-narrow/`, while English routes remain unprefixed and Chinese routes include `/zh-cn/`.
+After it succeeds, inspect `dist/sitemap.xml` and one generated content page. URLs should include `/astro-narrow/`, while content routes remain unprefixed (no `/en/`).
 
 ## Diagnose common failures
 

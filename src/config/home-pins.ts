@@ -2,7 +2,7 @@
  * Pinned Notes & Projects on the landing page.
  *
  * Edit `homePins` to choose up to 6 items. Each pin points at a published
- * content entry by type + locale-relative slug (no `en/` / `zh-cn/` prefix).
+ * content entry by type + locale-relative slug (no `en/` prefix).
  *
  * Examples:
  *   { type: 'posts', slug: 'hello-astro-narrow' }

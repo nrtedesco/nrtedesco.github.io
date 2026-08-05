@@ -1,56 +1,35 @@
 ---
-title: "Organizing Multilingual Content and Internal Links"
-description: "Keep English and Chinese content, routes, taxonomy terms, and base-aware links predictable."
+title: "Content Paths and Internal Links"
+description: "Keep content folders, routes, taxonomy terms, and base-aware links predictable."
 pubDate: 2026-06-23
 categories: ["Guides"]
-tags: ["i18n", "Routing", "Astro"]
+tags: ["Routing", "Astro"]
 toc: "side"
 ---
 
-Astro Narrow uses English as the default locale and includes Simplified Chinese as an example second locale. The URL structure is intentionally asymmetric: English pages have no `/en/` prefix, while Chinese pages live below `/zh-cn/`.
+This site is English-only. Content lives under locale folders for compatibility with the theme's content helpers, but `locales` only includes `en`, so pages are never prefixed with `/en/`.
 
-## Mirror content by locale directory
-
-Place translated entries in matching collection directories:
+## Place content under the English folder
 
 ```text
 src/content/posts/en/deploy-github-pages.md
-src/content/posts/zh-cn/deploy-github-pages.md
+src/content/projects/en/astro-narrow.md
+src/content/series/en/astro-narrow-practical-guide.md
 ```
 
-Matching filenames make the relationship easy to understand, but each file remains a complete content entry with its own title, description, dates, body, categories, and tags. A translation can be added later without blocking the original article.
+Collection helpers derive locale from the first path segment (`en/...`). Keep new posts in `src/content/posts/en/` so listing, search, RSS, and home pins resolve correctly.
 
-## Localize display taxonomy
+## Prefer locale helpers for internal links
 
-Archive terms are local display values rather than cross-language IDs:
-
-```yaml
-# English
-categories: ["Guides"]
-tags: ["Routing", "Astro"]
-
-# Simplified Chinese
-categories: ["指南"]
-tags: ["路由", "Astro"]
-```
-
-This keeps authoring simple and makes the filters read naturally. It also means the theme does not automatically infer that `Guides` and `指南` are the same entity; maintain naming consistency inside each locale.
-
-## Generate internal paths through helpers
-
-Use `getLocalePath(locale, path)` for system and content links. It handles both the default-locale rule and `ASTRO_BASE`:
+Use `getLocalePath()` instead of hard-coding root-absolute paths:
 
 ```ts
 getLocalePath('en', '/archives/')
 // /archives/
-
-getLocalePath('zh-cn', '/archives/')
-// /zh-cn/archives/
 ```
 
-On a project Pages deployment, both results also receive the configured repository base. Language switching uses `switchLocalePath()` so components do not need to split locale and base segments themselves.
+On a project Pages deployment, the result also receives the configured repository base. Prefer this helper over string concatenation so links stay inside `ASTRO_BASE`.
 
-## Verify both route shapes
+## Verify with a project-base build
 
-After adding a locale or changing navigation, build once with `ASTRO_BASE=/astro-narrow/`. Confirm that English paths do not gain `/en/`, Chinese paths keep `/zh-cn/`, and assets, Archives links, search results, RSS, and sitemap all stay inside the project base.
-
+After changing navigation or content paths, build once with `ASTRO_BASE=/astro-narrow/`. Confirm that routes do not gain an `/en/` prefix, and that assets, Archives links, search results, RSS, and sitemap all stay inside the project base.

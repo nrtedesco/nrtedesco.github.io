@@ -1,5 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { getLocaleFromId, getLocalePath, stripLocaleFromId, type Locale } from '../../config/i18n';
+import { getLocaleFromId, getLocalePath, localeMeta, stripLocaleFromId, type Locale } from '../../config/i18n';
 
 export type ContentType = 'posts' | 'projects' | 'pages';
 
@@ -36,7 +36,7 @@ export function localizedEntryPath(collection: ContentType, entry: CollectionEnt
 
 export function formatDate(date: Date | undefined, locale: Locale) {
   if (!date) return '';
-  return new Intl.DateTimeFormat(locale === 'zh-cn' ? 'zh-CN' : 'en', {
+  return new Intl.DateTimeFormat(localeMeta[locale].dateLocale, {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
@@ -67,7 +67,7 @@ export function collectArchiveTerms(
     for (const term of terms) counts.set(term, (counts.get(term) || 0) + 1);
   }
 
-  const collator = new Intl.Collator(locale === 'zh-cn' ? 'zh-CN' : locale);
+  const collator = new Intl.Collator(locale);
   return [...counts.entries()]
     .map(([value, count]) => ({ value, count }))
     .sort((a, b) => field === 'tags'

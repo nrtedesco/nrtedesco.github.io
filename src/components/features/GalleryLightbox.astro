@@ -6,10 +6,7 @@ interface Props {
   locale: Locale;
 }
 
-const { locale } = Astro.props;
-const labels = locale === 'zh-cn'
-  ? { dialog: '图片查看器', close: '关闭', previous: '上一张', next: '下一张' }
-  : { dialog: 'Image viewer', close: 'Close', previous: 'Previous', next: 'Next' };
+const labels = { dialog: 'Image viewer', close: 'Close', previous: 'Previous', next: 'Next' };
 ---
 
 <div

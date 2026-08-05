@@ -44,8 +44,6 @@ These checks run while Astro builds the static site.
 
 ## Localize the reading path
 
-Create a separate entry under `src/content/series/zh-cn/` for the Chinese version. It can use a localized title, introduction, and chapter list. Matching filenames keep language switching predictable, but the two entries remain independent content.
-
 ## Understand the public pages
 
 `/series/` lists available reading paths. `/series/<slug>/` renders the introduction and ordered chapters. A chapter displays a small Series link above its title, and its bottom navigation follows the series order instead of publication dates.

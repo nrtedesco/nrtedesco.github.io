@@ -1,5 +1,5 @@
 export const defaultLocale = 'en';
-export const locales = ['en', 'zh-cn'] as const;
+export const locales = ['en'] as const;
 
 export type Locale = (typeof locales)[number];
 
@@ -8,11 +8,6 @@ export const localeMeta: Record<Locale, { label: string; htmlLang: string; dateL
     label: 'English',
     htmlLang: 'en',
     dateLocale: 'en'
-  },
-  'zh-cn': {
-    label: '简体中文',
-    htmlLang: 'zh-CN',
-    dateLocale: 'zh-CN'
   }
 };
 

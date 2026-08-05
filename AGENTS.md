@@ -63,10 +63,9 @@ ASTRO_SITE=https://<user>.github.io ASTRO_BASE=/astro-narrow/ pnpm build
 
 ## 路由和链接规则
 
-- 默认语言是 `en`，不带 `/en/` 前缀；示例第二语言是 `zh-cn`，路径带 `/zh-cn/`。
+- 站点为英文单语：`locales = ['en']`，路径不带 `/en/` 前缀。
 - 生成内部链接时使用 `getLocalePath(locale, path)`，不要手写根路径绝对链接。
 - GitHub Pages 项目页会设置 `ASTRO_BASE`。任何 `href="/..."` 都可能绕过 base，除非它确实是外部或根域需求。
-- 语言切换路径使用 `switchLocalePath`，不要在组件里自行切分 base 和 locale。
 - 导航项应通过 `src/config/navigation.ts` 解析，新增系统路由时扩展 route registry。
 - sitemap/RSS/search 中的路径也要考虑 locale 和 base/site 的差异。
 
@@ -76,7 +75,7 @@ ASTRO_SITE=https://<user>.github.io ASTRO_BASE=/astro-narrow/ pnpm build
 - taxonomy 目前只保留 `tags`，不要新增 Hugo 风格 categories/series 兼容，除非明确作为 Astro 原生新功能设计。
 - front matter 以 `src/content.config.ts` 为准。新增字段必须先更新 schema，再更新组件消费逻辑。
 - 草稿使用 `draft` 字段；公开列表应继续过滤草稿。
-- 多语言内容通过目录和 `lang`/路径约定处理，不要引入 Hugo bundle 规则。
+- 内容放在 `src/content/<collection>/en/`；不要引入 Hugo bundle 规则或多语言兼容层。
 
 ## Markdown 功能
 
@@ -118,7 +117,7 @@ ASTRO_SITE=https://<user>.github.io ASTRO_BASE=/astro-narrow/ pnpm build
 
 - 修改前先读相关 config、组件和页面路由，确认现有模式。
 - 保持变更范围小，避免顺手重构无关文件。
-- 新增用户可见功能时同步考虑英文和简体中文文案。
+- 新增用户可见功能时使用英文文案。
 - 新增路由或内部链接时，必须用带 `ASTRO_BASE` 的构建验证 GitHub Pages 项目页路径。
 - 新增内容字段、配置项或行为时，同步更新 README 和示例内容，除非只是内部修复。
 - 不要覆盖用户未要求修改的内容文件。
@@ -131,7 +130,7 @@ ASTRO_SITE=https://<user>.github.io ASTRO_BASE=/astro-narrow/ pnpm build
 pnpm build
 ```
 
-涉及链接、资源路径、导航、搜索、RSS、sitemap、语言切换时，还要验证：
+涉及链接、资源路径、导航、搜索、RSS、sitemap 时，还要验证：
 
 ```sh
 ASTRO_BASE=/astro-narrow/ pnpm build
@@ -140,8 +139,7 @@ ASTRO_BASE=/astro-narrow/ pnpm build
 构建后重点检查：
 
 - 生成页面中内部链接是否包含正确 base。
-- 默认语言路径是否不带 `/en/`。
-- `zh-cn` 路径是否带 `/zh-cn/`。
+- 路径是否不带 `/en/` 前缀。
 - RSS、sitemap、search index 是否仍能生成。
 - 静态资源路径是否没有绕过 `BASE_URL`。
 

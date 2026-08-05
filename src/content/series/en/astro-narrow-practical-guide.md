@@ -1,6 +1,6 @@
 ---
 title: "Astro Narrow Practical Guide"
-description: "A focused path from content authoring and series organization to customization, localization, and deployment."
+description: "A focused path from content authoring and series organization to customization, routing, and deployment."
 chapters:
   - en/authoring-content-collections
   - en/configure-series
@@ -9,7 +9,7 @@ chapters:
   - en/deploy-github-pages
 ---
 
-This series follows the decisions involved in running an Astro Narrow site. Start with a reliable authoring workflow, organize longer material as a typed reading path, then refine the visual system, localized routes, and production deployment.
+This series follows the decisions involved in running an Astro Narrow site. Start with a reliable authoring workflow, organize longer material as a typed reading path, then refine the visual system, internal links, and production deployment.
 
 Each chapter stands on its own, but reading them in order moves from content structure to public delivery without introducing framework abstractions the theme does not need.
 

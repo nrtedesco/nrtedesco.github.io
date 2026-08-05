@@ -2,14 +2,13 @@
 
 A multi-color scheme Astro theme migrated from Hugo Narrow while retaining the overall Narrow design.
 
-[English](README.md) · [简体中文](README.zh-CN.md) · [Hugo Narrow](https://github.com/tom2almighty/hugo-narrow)
+[Hugo Narrow](https://github.com/tom2almighty/hugo-narrow)
 
 ## Features
 
 - Multiple color palettes
 - Table of contents
 - Search
-- Multiple languages
 - Math and diagrams
 - Side-by-side image galleries with lightbox
 
@@ -33,7 +32,7 @@ pnpm build
 
 `cardStyle` accepts `article`, `showcase`, or `compact`; `listLayout` accepts `stack` or `grid`; `gridColumns` accepts `1`, `2`, or `3`.
 
-When adding a locale, also update `i18n.locales` in `astro.config.mjs` and the allowed `lang` values in `src/content.config.ts`.
+This site is English-only (`locales: ['en']` in `src/config/i18n.ts` and `astro.config.mjs`).
 
 Navigation supports `posts`, `series`, `projects`, and `archives`:
 
@@ -42,11 +41,11 @@ nav: ["posts", "series", "projects", "archives"],
 footerNav: ["archives"],
 ```
 
-A custom item requires localized labels, a URL, and a Lucide icon:
+A custom item requires a label, a URL, and a Lucide icon:
 
 ```ts
 {
-  label: { en: "Docs", "zh-cn": "文档" },
+  label: { en: "Docs" },
   href: "https://example.com/docs/",
   icon: "lucide:book-open",
 }

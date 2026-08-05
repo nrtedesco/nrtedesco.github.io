@@ -85,7 +85,7 @@ export function getPublishedSeries() {
 
 export async function getLocalizedSeries(locale: Locale) {
   const series = await getPublishedSeries();
-  const collator = new Intl.Collator(locale === 'zh-cn' ? 'zh-CN' : locale);
+  const collator = new Intl.Collator(locale);
 
   return series
     .filter((item) => item.locale === locale)

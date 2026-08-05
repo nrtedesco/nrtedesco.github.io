@@ -34,9 +34,9 @@ const pinIcons: Record<HomePinType, string> = {
 };
 
 const pinLabels: Record<HomePinType, Record<Locale, string>> = {
-  posts: { en: 'Post', 'zh-cn': '文章' },
-  projects: { en: 'Project', 'zh-cn': '项目' },
-  series: { en: 'Series', 'zh-cn': '系列' }
+  posts: { en: 'Post' },
+  projects: { en: 'Project' },
+  series: { en: 'Series' }
 };
 
 export function homePinIcon(type: HomePinType) {
