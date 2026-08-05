@@ -21,7 +21,7 @@ const t = useTranslations(locale);
           href={pin.href}
           class="flex h-full flex-col overflow-hidden rounded-[var(--radius-card)] border border-border bg-background/40 shadow-[var(--surface-shadow)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/25 hover:bg-primary/5 hover:shadow-[var(--surface-shadow-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/25"
         >
-          <div class="relative aspect-[16/10] overflow-hidden bg-muted">
+          <div class="relative aspect-[2/1] overflow-hidden bg-muted">
             {pin.cover ? (
               <img
                 src={pin.cover}
@@ -45,7 +45,7 @@ const t = useTranslations(locale);
             </h2>
 
             {pin.description && (
-              <p class="mt-2 line-clamp-3 flex-1 text-sm leading-6 text-muted-foreground">
+              <p class="mt-2 line-clamp-3 flex-1 text-sm leading-snug text-muted-foreground">
                 {pin.description}
               </p>
             )}
