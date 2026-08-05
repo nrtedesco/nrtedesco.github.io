@@ -36,9 +36,12 @@ const {
 
 const pageTitle = title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
 const htmlLang = localeMeta[locale].htmlLang;
-const assetBase = import.meta.env.BASE_URL || '/';
-const faviconSvg = `${assetBase.replace(/\/?$/, '/')}favicon.svg`;
-const faviconIco = `${assetBase.replace(/\/?$/, '/')}favicon.ico`;
+const assetBase = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
+// Cache-bust so browsers pick up replaced favicon assets.
+const faviconVersion = 'v2';
+const faviconIco = `${assetBase}favicon.ico?${faviconVersion}`;
+const faviconPng = `${assetBase}favicon-32.png?${faviconVersion}`;
+const appleTouchIcon = `${assetBase}apple-touch-icon.png?${faviconVersion}`;
 const themeInit = `
 (() => {
   const root = document.documentElement;
@@ -63,8 +66,10 @@ const themeInit = `
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href={faviconSvg} />
-    <link rel="icon" href={faviconIco} />
+    <link rel="icon" href={faviconIco} sizes="any" />
+    <link rel="icon" href={faviconPng} type="image/png" sizes="32x32" />
+    <link rel="shortcut icon" href={faviconIco} />
+    <link rel="apple-touch-icon" href={appleTouchIcon} />
     <title>{pageTitle}</title>
     <script is:inline set:html={themeInit}></script>
   </head>
