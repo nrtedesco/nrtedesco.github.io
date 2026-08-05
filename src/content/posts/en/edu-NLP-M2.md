@@ -1,0 +1,174 @@
+---
+title: "NLP Foundations"
+description: Module 2 of CS 7650 - Natural Language Processing @ Georgia Tech.
+pubDate: 2025-10-22
+categories: [OMSCS, NLP]
+tags: [Natural Language Processing, Machine Learning, Statistics]
+math: true
+---
+
+### Probability and Statistics
+
+#### Basics of Probability
+
+The fundamental unit of probability is a **Random Variable** - a variable that can hold a value from a predefined range. A random variable has not yet been observed; conversely, an *observation* is an instance of a random variable that has been realized. Random variables are commonly represented with uppercase letters, and their corresponding observations with lowercase versions of the same letter.   
+
+$$X \sim N(0, 1) ~~~~~x = 0.7$$  
+
+Random variables define a *probability distribution* over their *sample space* - that is, each possible value of the random variable has some probability of occurring. We denote the probability of a specific value occurring as follows:  
+
+$$\Pr(X \geq 1.96) = 0.025$$  
+
+In addition to defining probability expressions for a single random variable, we can use *logical operators* to construct more complicated expressions involving multiple random variables. Consider the following random variables: 
+
+- $R$: boolean representing the event of rain. 
+- $H$: boolean representing the event of being hot.  
+  
+$$\Pr(R = \text{True} ~ \text{AND} ~ H = \text{False})$$  
+
+There are certain **Probability Rules** involving logical operations. Consider two random variables $A$ and $B$ representing arbitrary events. 
+
+- *Addition Rule*: $P(A ~ \text{OR} ~ B) = P(A) + P(B) - P(A \cap B)$
+	- $\Pr(A \cap B)$: probability of events $A$ and $B$ intersecting (both occurring). 
+- *Product Rule*: $P(A ~ \text{AND} ~ B) = P(A) * P(B \| A)$
+	- $\Pr(B\|A)$: probability of event $B$ occurring, given event $A$ has already occurred. 
+
+In the case of multiple random variables, we can define a **Joint Distribution** - this specifies the full probability distribution over the co-occurrence of variables in the set. Given a full joint distribution, we can compute some interesting terms: 
+
+- *Conditional Probability*: $\Pr(B\|A) = \frac{\Pr(A \cap B)}{\Pr(A)}$ 
+- *Marginal Probability*: $\Pr(A) = \Sigma_i \Pr(A\|B_i)$ 
+
+Note that in the case of two *independent* random variables, the conditional probability is equivalent to the marginal probability.   
+
+$$A \perp \!\!\! \perp B ~~ iff ~~ \Pr(A|B) = \Pr(A)$$  
+
+What happens when we have queries that don't include all variables in the full joint distribution? This is prevalent in the case of *hidden variables*. We can convert any *partial joint distribution* to a full joint distribution by summing over all possible values of the hidden variables.    
+
+$$\Pr(A \cap B) = \Sigma_i \Pr(A \cap B \cap C_i)$$  
+
+#### Bayesian Statistics 
+
+**Bayes Rule** is a probability theorem which inverts the conditional probabilities of two random variables. Bayes Rule provides a mathematical framework to update our beliefs given some prior belief, current likelihood, and normalization (evidence) term. More specifically...
+$$ \Pr(B|A) = \frac{\Pr(A|B) * \Pr(B)}{\Pr(A)}$$
+- *Posterior Probability* $P(B\|A)$: updated probability of B after considering evidence. 
+- *Likelihood* $P(A\|B)$: probability of evidence given belief is true. 
+- *Prior* $P(B)$: probability before evidence was considered. 
+- *Evidence* $P(A)$: probability of observing the evidence under any circumstances. 
+
+Bayes Rule is relatively straightforward with two random variables. However, what happens when we have more than two variables? We can apply our same inversion logic as follows:  
+
+$$\Pr(B|A_1, A_2) = \frac{\Pr(A_2|B, A_1) * \Pr(B, A_1)}{\Pr(A_1, A_2)}$$  
+
+- we typically don't have access to the full joint probability distribution, so we can decompose $\Pr(B, A_1)$ into $\Pr(A_1\|B) * \Pr(B)$ via the product rule. 
+- computation of the normalization term (evidence) $\alpha$ is only necessary if we wish to recover a valid probability distribution; note that the posterior is directly proportional to the numerator. 
+
+One example application of Bayes Rule is for cause-and-effect analysis - we may have one thing that is relatively easy to observe (effect), and something else we would like to estimate that is not as easy to observe (cause). If we have multiple independent effect variables, we have the following mathematical relationship (where alpha is the normalization term).  
+
+$$\Pr(C|E_1, E_2, ..., E_n) = \alpha \Pr(E_1|C) P(E_2|C) \ldots \Pr(E_n|C)$$  
+
+- due to independence, we know that $\Pr(E_1 \| C, E_2, \ldots, E_n) = \Pr(E_1, C)$. 
+
+Even in the case of dependent variables, we can naively assume our variables are independent to make use of this calculation. This is called the **Naive Bayes Assumption**. 
+
+A **Bayesian Network** is the same thing as Bayes Rule applied to multiple random variables, but instead represented as a *directed acyclic graph (DAG)* of nodes. More formally, a Bayesian Network is a method for visualizing the causal relationship between a set of random variables. 
+
+#### Application to Language + NLP
+
+In NLP, we run into Bayesian frameworks all the time. Consider the following example: what is the probability of a positive review sentiment $S$ given the observed words $w$?  
+
+$$P(S = + ~ | ~ w_1, ..., w_n) = \alpha P(S = +) * \prod{P(w_i ~ | ~ S=+)}$$  
+
+We can consider documents *probabilistic word emissions* - the document is of a certain class (ex: sentiment = positive), and it emits words in a probabilistic fashion conditioned on the document class. 
+
+### Machine Learning
+
+#### Supervised Learning
+
+**Supervised Learning** is a class of machine learning algorithms dedicated to to predicting some output from an input; in other words, supervised learning is a form of *function approximation* where the goal is to learn a *target function* mapping inputs $X$ to outputs $y$.  
+
+$$ f : X \rightarrow y$$  
+
+A predictive model is fit on *training data* of the form $(X_i, y_i)$, with performance measured via some *objective function*. Supervised learning tasks may be broadly grouped into two problem types: 
+
+- *Classification* -> output variable is discrete / categorical. 
+- *Regression* -> output variable is continuous / numeric. 
+  
+#### Neural Networks 
+
+A **Neural Network** is an artificial mathematical model used to approximate *non-linear functions*. Neural networks are one approach to supervised learning, but are also used in other subfields of machine learning (unsupervised, reinforcement learning). 
+
+Neural networks contain dense interconnected *layers* of *nodes*. Each node is a simple gated function, where gating is controlled via a *linear combination* of features and weights, and some *activation function* to process the linear combination in a non-linear fashion. 
+
+**Gradient Descent** is the primary algorithm used to *optimize* - calculate the optimal weights - for a neural network. Gradient descent relies on some **loss function** to measure a neural network's performance on predictions. For example, *mean squared error* is calculated as follows:  
+
+$$MSE = \frac{\Sigma(y_i - \hat{y_i})^2}{N}$$ 
+
+The optimal weights for a neural network should minimize the loss function. This is a calculus (optimization) problem - we need to calculate the **gradient**, which is the *vector of partial derivatives* of the loss function with respect to each weight parameter.  
+
+$$\nabla L = [\frac{\partial_L}{\partial_{w_1}}, \frac{\partial_L}{\partial_{w_2}}, ..., \frac{\partial_L}{\partial_{w_n}}]$$  
+
+The gradient points in the direction of steepest ascent. Therefore, if we were to change each weight by its corresponding partial derivative, we would proceed in the direction of most increasing loss. Instead, for gradient descent, we are interested in proceeding in the direction of *steepest descent* to reduce loss in the most efficient manner. Gradient descent is an *iterative* algorithm; a single update step for any given weight is calculated as follows:  
+
+$$w_{k+1} = w_k + \eta \nabla L(w)$$ 
+
+- $k$ represents the current step of training. 
+- $\eta$ is the *learning rate*, and controls step size (how large of a change we induce in weights during a given step). 
+
+#### Deep Learning
+
+**Deep learning** refers to a specific class of machine learning models composed of many (e.g., a deep number of) individual layers of differentiable parameters. More specifically, a deep learning model is a neural network with at least two *hidden layers*, where a hidden layer is any layer other than the input or output layers. This is in contrast to a shallow neural network, which only contains a single hidden layer. 
+
+### Programming
+
+#### Modern Deep Learning Libraries
+
+The primary modern software libraries for implementing deep learning include **PyTorch**, **TensorFlow**, and **Keras**. Each of these libraries are able to use *parallelization* to increase the computational efficiency of gradient descent, accomplishing this via direct integration with the *graphics processing unit (GPU)*. In this class, we will focus on PyTorch. 
+
+PyTorch uses *tensors* as the fundamental data structure, where a tensor is an n-dimensional array of values (i.e., generalization of scalar / vector / matrix to higher dimensions). We can create a model in PyTorch by subclassing the `torch.nn.module` class. 
+
+
+```python
+from torch import nn
+
+class MyNeuralNetwork(nn.Module): 
+
+	def __init__(self): 
+		
+		""" self is where we define the architecture of our NN via layers.
+		"""
+		
+		## call the superclass (nn.Module) to initialize our subclass 
+		super().__init__()
+		
+		## flatten input data into a 1D vector (for input to neural network)
+		self.flatten = nn.Flatten() 
+		
+		## construct neural network 
+		self.model = nn.Sequential([
+			nn.Linear(5, 3),   ## each layer takes n_input, n_output as params	
+			nn.Sigmoid(), 
+			nn.Linear(3, 5), 
+			nn.Sigmoid(), 
+			nn.Linear(5, 1), 
+			nn.Sigmoid()
+		])
+		
+	def forward(self, x): 
+	
+		""" forward is where we define how an input is transformed by our model.
+		"""
+		
+		x = self.flatten(x) 
+		y = self.model(x) 
+		
+		return y
+		
+		
+## instantiate model + predict on instance
+model = MyNeuralNetwork() 
+pred = model(x) 
+```
+
+---
+
+(all images obtained from Georgia Tech NLP course materials)
