@@ -57,6 +57,26 @@ const themeInit = `
   }
 })();
 `;
+const scrollTopInit = `
+(() => {
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch {}
+  // Home section hashes from scroll arrows should not stick across refresh.
+  if (location.hash === '#home-experience' || location.hash === '#home-pinned-posts') {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+  const toTop = () => {
+    if (location.hash) return;
+    window.scrollTo(0, 0);
+  };
+  if (document.readyState === 'complete') toTop();
+  else window.addEventListener('load', toTop, { once: true });
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) toTop();
+  });
+})();
+`;
 ---
 
 <!doctype html>
@@ -72,6 +92,7 @@ const themeInit = `
     <link rel="apple-touch-icon" href={appleTouchIcon} />
     <title>{pageTitle}</title>
     <script is:inline set:html={themeInit}></script>
+    <script is:inline set:html={scrollTopInit}></script>
   </head>
   <body class="bg-background text-foreground min-h-screen antialiased">
     <main class="mx-auto min-h-screen w-full max-w-[var(--layout-content-width)] px-4">
