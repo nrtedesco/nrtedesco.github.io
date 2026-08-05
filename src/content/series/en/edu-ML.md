@@ -22,5 +22,4 @@ chapters:
   - en/edu-ml-m18
   - en/edu-ml-m19
   - en/edu-ml-m20
-cover: "/img/posts/edu-ML/pasted-image-20251230121236.png"
 ---
