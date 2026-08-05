@@ -3,20 +3,9 @@ import { siteConfig } from '../config/site';
 
 type LightboxItem = { id: GalleryItemId; src: string; alt: string; caption: string };
 type LayoutItem = GalleryItemInput & { id: GalleryItemId; src: string; aspectRatio: number };
-type Layout = GalleryLayout;
 
 const cfg = siteConfig.gallery as Record<string, any>;
-const LAYOUTS: Layout[] = ['justified', 'masonry', 'grid'];
-const DEFAULT_LAYOUT: Layout = LAYOUTS.includes(cfg.defaultLayout) ? cfg.defaultLayout : 'justified';
-
-const LAYOUT_ICONS: Record<Layout, string> = {
-  justified:
-    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="5" rx="1"/><rect x="3" y="11" width="8" height="9" rx="1"/><rect x="13" y="11" width="8" height="9" rx="1"/></svg>',
-  masonry:
-    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="3" y="12" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="11" rx="1"/><rect x="14" y="16" width="7" height="5" rx="1"/></svg>',
-  grid:
-    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>'
-};
+const LAYOUT: GalleryLayout = 'grid';
 
 // ---------------------------------------------------------------- Lightbox ---
 const galleries = new Map<string, LightboxItem[]>();
@@ -106,14 +95,12 @@ function aspectRatioOf(img: HTMLImageElement | null, src: string): Promise<numbe
   });
 }
 
-function createInstance(host: HTMLElement, layout: Layout, items: LayoutItem[], galleryId: string) {
+function createInstance(host: HTMLElement, items: LayoutItem[], galleryId: string) {
   const instance = new SmartGallery(host, {
-    layout,
+    layout: LAYOUT,
     gap: Number(cfg.gap) || 10,
-    targetRowHeight: Number(cfg.targetRowHeight) || 220,
-    lastRowBehavior: cfg.lastRowBehavior || 'center',
-    columnWidth: Number(cfg.columnWidth) || 220,
-    columns: cfg.columns ?? 'auto',
+    // One column per image so consecutive photos sit side by side.
+    columns: items.length,
     virtualize: false,
     placeholderColor: 'var(--color-muted)',
     itemClassName: 'sg-item',
@@ -157,37 +144,11 @@ async function setupGallery(gallery: HTMLElement, groupIndex: number) {
     }))
   );
 
-  let layout: Layout = DEFAULT_LAYOUT;
-  let instance: SmartGallery | null = null;
   const host = document.createElement('div');
-
-  const switcher = document.createElement('div');
-  switcher.className = 'mb-3 flex justify-end gap-1';
-  const buttons = LAYOUTS.map((value) => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.title = value;
-    button.setAttribute('aria-label', `${value} layout`);
-    button.setAttribute('aria-pressed', String(value === layout));
-    button.className =
-      'grid h-8 w-8 place-items-center rounded-[var(--radius-control)] border border-border text-muted-foreground transition-colors hover:bg-accent hover:text-foreground aria-pressed:border-primary/40 aria-pressed:bg-accent aria-pressed:text-primary';
-    button.innerHTML = LAYOUT_ICONS[value];
-    button.addEventListener('click', () => {
-      if (value === layout || !instance) return;
-      layout = value;
-      instance.setOptions({ layout });
-      buttons.forEach((entry) => entry.setAttribute('aria-pressed', String(entry.dataset.layout === layout)));
-    });
-    button.dataset.layout = value;
-    return button;
-  });
-  buttons.forEach((button) => switcher.appendChild(button));
-
   gallery.innerHTML = '';
-  gallery.appendChild(switcher);
   gallery.appendChild(host);
   // Host 必须先进入 DOM，SmartGallery 才能在 setItems() 时获取正确宽度。
-  instance = createInstance(host, layout, items, galleryId);
+  createInstance(host, items, galleryId);
 }
 
 document.querySelectorAll<HTMLElement>('.markdown-gallery').forEach((gallery, index) => {

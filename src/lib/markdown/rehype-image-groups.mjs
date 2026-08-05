@@ -70,7 +70,7 @@ function galleryForImages(images) {
     properties: {
       className: ['markdown-gallery', 'not-prose', 'my-8'],
       dataGallery: 'true',
-      dataLayout: 'auto'
+      dataLayout: 'grid'
     },
     children: images.map((img, index) => figureForImage(img, index))
   };
@@ -79,23 +79,45 @@ function galleryForImages(images) {
 function visit(parent) {
   if (!Array.isArray(parent.children)) return;
 
+  const next = [];
+
   for (let index = 0; index < parent.children.length; index += 1) {
     const child = parent.children[index];
 
     if (child.type === 'element' && child.tagName === 'p') {
       const images = imageChildren(child);
-      if (images.length === 1) {
-        parent.children[index] = figureForImage(images[0]);
-        continue;
-      }
-      if (images.length > 1) {
-        parent.children[index] = galleryForImages(images);
+      if (images.length > 0) {
+        // Merge successive image-only paragraphs so blank lines between photos
+        // still produce a side-by-side gallery.
+        const grouped = [...images];
+        let lookAhead = index + 1;
+        while (lookAhead < parent.children.length) {
+          const sibling = parent.children[lookAhead];
+          if (isWhitespace(sibling)) {
+            lookAhead += 1;
+            continue;
+          }
+          if (sibling.type === 'element' && sibling.tagName === 'p') {
+            const more = imageChildren(sibling);
+            if (more.length > 0) {
+              grouped.push(...more);
+              lookAhead += 1;
+              continue;
+            }
+          }
+          break;
+        }
+        index = lookAhead - 1;
+        next.push(grouped.length === 1 ? figureForImage(grouped[0]) : galleryForImages(grouped));
         continue;
       }
     }
 
     visit(child);
+    next.push(child);
   }
+
+  parent.children = next;
 }
 
 export function rehypeImageGroups() {

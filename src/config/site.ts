@@ -59,7 +59,7 @@ export const siteConfig = {
   },
   gallery: {
     enabled: true,
-    defaultLayout: 'justified',
+    defaultLayout: 'grid',
     gap: 10,
     targetRowHeight: 220,
     lastRowBehavior: 'center',

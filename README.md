@@ -11,7 +11,7 @@ A multi-color scheme Astro theme migrated from Hugo Narrow while retaining the o
 - Search
 - Multiple languages
 - Math and diagrams
-- Multiple gallery layouts
+- Side-by-side image galleries with lightbox
 
 ## Quick Start
 
