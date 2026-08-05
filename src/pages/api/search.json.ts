@@ -18,7 +18,7 @@ export async function GET() {
         tags: 'tags' in entry.data ? entry.data.tags : [],
         categories: 'categories' in entry.data ? entry.data.categories : [],
         date: entry.data.pubDate?.toISOString?.() || '',
-        content: entry.body.slice(0, 8000)
+        content: (entry.body ?? '').slice(0, 8000)
       });
     }
   }
@@ -34,7 +34,7 @@ export async function GET() {
       tags: [],
       categories: [],
       date: '',
-      content: entry.body.slice(0, 8000)
+      content: (entry.body ?? '').slice(0, 8000)
     });
   }
 

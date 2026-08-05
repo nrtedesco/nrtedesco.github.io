@@ -32,5 +32,6 @@ export const homePins = defineHomePins([
   { type: 'posts',  slug: 'outdoors-loyalsock' },
   { type: 'series', slug: 'edu-gios' },
   { type: 'posts',  slug: 'outdoors-acadia' },
+  { type: 'series', slug: 'edu-dl'},
   { type: 'posts',  slug: 'chess-vienna' }
 ]);
