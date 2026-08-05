@@ -14,16 +14,25 @@ function figureForImage(img, index = 0) {
   const title = img.properties?.title;
   const alt = img.properties?.alt || '';
   img.properties ||= {};
-  img.properties.loading ||= 'lazy';
+  // Avoid native lazy-loading here: without intrinsic width/height the <img>
+  // collapses to 0×0, so later images never intersect the viewport and stay unloaded.
+  img.properties.loading = 'eager';
   img.properties.decoding ||= 'async';
-  img.properties.className = ['mx-auto', 'block', 'max-h-[30rem]', 'w-auto', 'max-w-full', 'cursor-zoom-in', 'object-contain'];
+  img.properties.className = ['h-full', 'w-full', 'cursor-zoom-in', 'object-cover'];
 
   const children = [
     {
       type: 'element',
       tagName: 'div',
       properties: {
-        className: ['image-container', 'flex', 'justify-center', 'overflow-hidden', 'rounded-[var(--radius-panel)]', 'bg-muted/20']
+        // Match post cover: `--radius-card` on all four corners via overflow clip.
+        className: [
+          'image-container',
+          'aspect-video',
+          'w-full',
+          'overflow-hidden',
+          'rounded-[var(--radius-card)]'
+        ]
       },
       children: [img]
     }
@@ -45,7 +54,7 @@ function figureForImage(img, index = 0) {
     type: 'element',
     tagName: 'figure',
     properties: {
-      className: ['image-figure', 'not-prose', 'my-8'],
+      className: ['image-figure', 'not-prose', 'mt-8', 'mb-1'],
       dataImageSrc: img.properties.src,
       dataImageAlt: alt,
       dataGalleryIndex: String(index)

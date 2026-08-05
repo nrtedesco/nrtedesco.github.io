@@ -4,7 +4,7 @@ description: Summary of common positions + tactical motifs apparent in the Scand
 pubDate: 2026-01-25
 categories: [Chess, Opening Theory]
 tags: [Chess, Black Openings, Scandinavian Defense, Scandinavian Main Line, Mieses-Kotrc Variation, Modern Variation, Closed Variation, Advanced Variation] 
-cover: "/img/cover-images/scandinavian-cover.jpg"
+cover: "/img/posts/chess-scandinavian/scandinavian-cover.jpg"
 ---
 
 ### Introduction 

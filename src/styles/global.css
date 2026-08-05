@@ -294,10 +294,13 @@ a {
   border: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
+  border-radius: var(--radius-card);
+  overflow: hidden;
 }
 
 .image-container img {
   border: 0 !important;
+  border-radius: inherit;
 }
 
 .prose .expressive-code {
