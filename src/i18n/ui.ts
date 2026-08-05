@@ -37,7 +37,7 @@ export const ui = {
     'notFound.action': 'Back home',
     'notFound.description': 'The page you are looking for does not exist.',
     'notFound.title': 'Page not found',
-    'posts.description': 'Notes, essays, and technical writing.',
+    'posts.description': 'Notes intended to summarize core concepts from various courses and personal self-learning endeavors. Blog posts recapping my travel and hiking experiences.',
     'posts.title': 'Posts',
     'postNav.next': 'Next',
     'postNav.navigation': 'Post navigation',
