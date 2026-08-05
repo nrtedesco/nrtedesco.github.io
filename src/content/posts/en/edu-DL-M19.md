@@ -1,6 +1,6 @@
 ---
 title: "Translation and ASR (Meta)"
-description: Module 16 of CS 7643 - Deep Learning @ Georgia Tech.
+description: Module 19 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-28
 categories: [OMSCS, DL]
 tags: [Deep Learning, Machine Learning, Machine Translation, Meta, Speech Recognition, Seq2seq, RNN, LSTM, Encoder, Decoder, Attention]

@@ -19,6 +19,7 @@ chapters:
   - en/edu-dl-m14
   - en/edu-dl-m15
   - en/edu-dl-m16
+  - en/edu-dl-m17
   - en/edu-dl-m18
   - en/edu-dl-m19
 cover: "/img/posts/edu-DL/pasted-image-20250901055535.png"
