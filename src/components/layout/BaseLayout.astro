@@ -42,6 +42,18 @@ const faviconVersion = 'v2';
 const faviconIco = `${assetBase}favicon.ico?${faviconVersion}`;
 const faviconPng = `${assetBase}favicon-32.png?${faviconVersion}`;
 const appleTouchIcon = `${assetBase}apple-touch-icon.png?${faviconVersion}`;
+const emphasis = siteConfig.post.emphasis ?? {};
+const rootStyle = [
+  `--layout-content-width: ${siteConfig.contentWidth}`,
+  emphasis.bold?.light && `--color-prose-bold: ${emphasis.bold.light}`,
+  emphasis.bold?.dark && `--color-prose-bold-dark: ${emphasis.bold.dark}`,
+  emphasis.italic?.light && `--color-prose-italic: ${emphasis.italic.light}`,
+  emphasis.italic?.dark && `--color-prose-italic-dark: ${emphasis.italic.dark}`,
+  emphasis.boldItalic?.light && `--color-prose-bold-italic: ${emphasis.boldItalic.light}`,
+  emphasis.boldItalic?.dark && `--color-prose-bold-italic-dark: ${emphasis.boldItalic.dark}`
+]
+  .filter(Boolean)
+  .join('; ');
 const themeInit = `
 (() => {
   const root = document.documentElement;
@@ -80,7 +92,7 @@ const scrollTopInit = `
 ---
 
 <!doctype html>
-<html lang={htmlLang} data-theme="default" style={`--layout-content-width: ${siteConfig.contentWidth}`}>
+<html lang={htmlLang} data-theme="default" style={rootStyle}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />

@@ -74,6 +74,24 @@ export const siteConfig = {
       name: 'CC BY-NC-SA 4.0',
       url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
       description: 'This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.'
+    },
+    /**
+     * Colors for Markdown emphasis in post prose (`**bold**`, `*italic*`, `***both***`).
+     * Use any valid CSS color. Light/dark variants keep contrast in both modes.
+     */
+    emphasis: {
+      bold: {
+        light: '#04B1FB',
+        dark: '#04B1FB'
+      },
+      italic: {
+        light: '#FB7F04',
+        dark: '#FB7F04'
+      },
+      boldItalic: {
+        light: 'oklch(0.46 0.18 320)',
+        dark: 'oklch(0.84 0.12 320)'
+      }
     }
   }
 } satisfies {

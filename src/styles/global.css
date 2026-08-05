@@ -233,7 +233,7 @@ a {
   --tw-prose-headings: var(--color-foreground);
   --tw-prose-lead: var(--color-muted-foreground);
   --tw-prose-links: var(--color-primary);
-  --tw-prose-bold: var(--color-foreground);
+  --tw-prose-bold: var(--color-prose-bold, var(--color-foreground));
   --tw-prose-counters: var(--color-muted-foreground);
   --tw-prose-bullets: var(--color-muted-foreground);
   --tw-prose-hr: var(--color-border);
@@ -319,13 +319,33 @@ a {
   font-style: italic;
 }
 
+/* Emphasis colors come from `siteConfig.post.emphasis` (injected on <html>). */
 .prose strong {
-  color: var(--tw-prose-bold);
+  color: var(--color-prose-bold, var(--tw-prose-bold));
   font-weight: 650;
 }
 
 .prose em {
-  color: var(--tw-prose-body);
+  color: var(--color-prose-italic, var(--tw-prose-body));
+}
+
+.prose :is(strong em, em strong) {
+  color: var(--color-prose-bold-italic, var(--color-prose-bold, var(--tw-prose-bold)));
+}
+
+.dark .prose strong {
+  color: var(--color-prose-bold-dark, var(--color-prose-bold, var(--tw-prose-bold)));
+}
+
+.dark .prose em {
+  color: var(--color-prose-italic-dark, var(--color-prose-italic, var(--tw-prose-body)));
+}
+
+.dark .prose :is(strong em, em strong) {
+  color: var(
+    --color-prose-bold-italic-dark,
+    var(--color-prose-bold-italic, var(--color-prose-bold-dark, var(--color-prose-bold, var(--tw-prose-bold))))
+  );
 }
 
 .prose :is(del, s) {
