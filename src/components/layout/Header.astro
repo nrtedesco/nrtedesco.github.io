@@ -16,7 +16,8 @@ const t = useTranslations(locale);
 const sticky = siteConfig.ui.navbar.sticky;
 const headerClass = sticky ? 'sticky top-0 pt-5' : 'relative mt-5';
 
-const headerSocial = siteConfig.author.social.filter((item) => item.name === 'GitHub' || item.name === 'LinkedIn');
+const headerSocialNames = new Set(['GitHub', 'LinkedIn', 'Resume']);
+const headerSocial = siteConfig.author.social.filter((item) => headerSocialNames.has(item.name));
 
 const socialLinkClass =
   'grid h-9 w-9 place-items-center rounded-[var(--radius-control)] text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground';
@@ -24,6 +25,12 @@ const socialLinkClass =
 function isActive(href: string) {
   if (href === '/') return currentPath === href;
   return currentPath === href || currentPath.startsWith(href);
+}
+
+function resolveSocialUrl(url: string) {
+  if (/^(https?:)?\/\//.test(url) || url.startsWith('mailto:') || url.startsWith('data:')) return url;
+  const base = import.meta.env.BASE_URL || '/';
+  return `${base.replace(/\/?$/, '/')}${url.replace(/^\//, '')}`;
 }
 ---
 
@@ -65,7 +72,7 @@ function isActive(href: string) {
           {headerSocial.map((item) => (
             <a
               class={socialLinkClass}
-              href={item.url}
+              href={resolveSocialUrl(item.url)}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={item.name}
