@@ -1,4 +1,4 @@
-name: Deploy Example Site
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -37,7 +37,8 @@ jobs:
       - name: Build and upload
         uses: withastro/action@v6
         with:
-          package-manager: pnpm@11.6.0
+          # Match package.json engines; lockfile auto-detects pnpm via pnpm-lock.yaml.
+          node-version: 22
 
   deploy:
     needs: build
@@ -49,3 +50,4 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v5
+
