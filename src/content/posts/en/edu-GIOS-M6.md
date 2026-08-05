@@ -1,5 +1,5 @@
 ---
-title: "GIOS M6: Thread Performance"
+title: "Thread Performance"
 description: Module 6 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-05
 categories: [OMSCS, GIOS]

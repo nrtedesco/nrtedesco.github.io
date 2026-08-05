@@ -1,5 +1,5 @@
 ---
-title: "GIOS M3: Threads and Concurrency"
+title: "Threads and Concurrency"
 description: Module 3 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-03
 categories: [OMSCS, GIOS]

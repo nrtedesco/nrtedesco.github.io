@@ -1,5 +1,5 @@
 ---
-title: "DL M10: Language Modeling (Meta)"
+title: "Language Modeling (Meta)"
 description: Module 10 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-10-29
 categories: [OMSCS, DL]

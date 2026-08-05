@@ -1,5 +1,5 @@
 ---
-title: "DL M19: Translation and ASR (Meta)"
+title: "Translation and ASR (Meta)"
 description: Module 16 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-28
 categories: [OMSCS, DL]

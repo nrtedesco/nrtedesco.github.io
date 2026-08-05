@@ -1,5 +1,5 @@
 ---
-title: "DL M8: Advanced Computer Vision Architectures"
+title: "Advanced Computer Vision Architectures"
 description: Module 8 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-16
 categories: [OMSCS, DL]

@@ -1,5 +1,5 @@
 ---
-title: "GIOS M12: Virtualization"
+title: "Virtualization"
 description: Module 12 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-10
 categories: [OMSCS, GIOS]

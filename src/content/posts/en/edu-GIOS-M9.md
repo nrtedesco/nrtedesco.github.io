@@ -1,5 +1,5 @@
 ---
-title: "GIOS M9: Inter-Process Communication"
+title: "Inter-Process Communication"
 description: Module 9 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-06
 categories: [OMSCS, GIOS]

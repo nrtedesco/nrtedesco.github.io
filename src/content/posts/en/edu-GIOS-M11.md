@@ -1,5 +1,5 @@
 ---
-title: "GIOS M11: IO Management"
+title: "IO Management"
 description: Module 11 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-08
 categories: [OMSCS, GIOS]

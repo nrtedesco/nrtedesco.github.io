@@ -1,5 +1,5 @@
 ---
-title: "DL M2: Neural Networks"
+title: "Neural Networks"
 description: Module 2 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-03
 categories: [OMSCS, DL]

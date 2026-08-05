@@ -1,5 +1,5 @@
 ---
-title: "DL M15: Scalable Training"
+title: "Scalable Training"
 description: Module 15 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-24
 categories: [OMSCS, DL]

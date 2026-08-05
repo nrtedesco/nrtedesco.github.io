@@ -1,5 +1,5 @@
 ---
-title: "GIOS M16: Datacenter Technologies"
+title: "Datacenter Technologies"
 description: Module 16 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-12
 categories: [OMSCS, GIOS]

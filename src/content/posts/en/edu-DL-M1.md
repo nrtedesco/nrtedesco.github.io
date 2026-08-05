@@ -1,5 +1,5 @@
 ---
-title: "DL M1: Linear Classifiers and Gradient Descent"
+title: "Linear Classifiers and Gradient Descent"
 description: Module 1 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-03
 categories: [OMSCS, DL]

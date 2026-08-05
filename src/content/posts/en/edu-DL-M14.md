@@ -1,5 +1,5 @@
 ---
-title: "DL M14: Embeddings (Meta)"
+title: "Embeddings (Meta)"
 description: Module 14 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-09
 categories: [OMSCS, DL]

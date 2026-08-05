@@ -1,5 +1,5 @@
 ---
-title: "GIOS M5: Thread Design"
+title: "Thread Design"
 description: Module 5 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-04
 categories: [OMSCS, GIOS]

@@ -1,5 +1,5 @@
 ---
-title: "DL M12: Machine Translation (Meta)"
+title: "Machine Translation (Meta)"
 description: Module 12 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-10-31
 categories: [OMSCS, DL]

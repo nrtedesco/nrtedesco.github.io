@@ -1,5 +1,5 @@
 ---
-title: "DL M9: Introduction to Structured Representations"
+title: "Introduction to Structured Representations"
 description: Module 9 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-10-28
 categories: [OMSCS, DL]

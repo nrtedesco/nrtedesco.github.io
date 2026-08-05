@@ -1,5 +1,5 @@
 ---
-title: "DL M4: Data Wrangling (Meta)"
+title: "Data Wrangling (Meta)"
 description: Module 4 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-05
 categories: [OMSCS, DL]

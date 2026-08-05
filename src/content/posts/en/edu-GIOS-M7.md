@@ -1,5 +1,5 @@
 ---
-title: "GIOS M7: Scheduling"
+title: "Scheduling"
 description: Module 7 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-05
 categories: [OMSCS, GIOS]

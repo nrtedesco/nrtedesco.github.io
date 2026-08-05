@@ -1,5 +1,5 @@
 ---
-title: "DL M6: CNN Backprop + Common Architectures"
+title: "CNN Backprop + Common Architectures"
 description: Module 6 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-14
 categories: [OMSCS, DL]

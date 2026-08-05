@@ -1,5 +1,5 @@
 ---
-title: "DL M3: Optimization of Deep Neural Networks"
+title: "Optimization of Deep Neural Networks"
 description: Module 3 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-05
 categories: [OMSCS, DL]

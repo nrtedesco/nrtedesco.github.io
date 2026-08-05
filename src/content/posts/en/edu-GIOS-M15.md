@@ -1,5 +1,5 @@
 ---
-title: "GIOS M15: Distributed Shared Memory"
+title: "Distributed Shared Memory"
 description: Module 15 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-13
 categories: [OMSCS, GIOS]

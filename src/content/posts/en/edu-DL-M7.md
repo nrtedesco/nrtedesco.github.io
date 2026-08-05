@@ -1,5 +1,5 @@
 ---
-title: "DL M7: CNN Visualization"
+title: "CNN Visualization"
 description: Module 7 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-15
 categories: [OMSCS, DL]

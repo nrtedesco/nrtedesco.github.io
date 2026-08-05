@@ -1,5 +1,5 @@
 ---
-title: "GIOS M4: PThreads"
+title: "PThreads"
 description: Module 4 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-04
 categories: [OMSCS, GIOS]

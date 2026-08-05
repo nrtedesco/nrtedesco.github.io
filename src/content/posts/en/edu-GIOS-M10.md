@@ -1,5 +1,5 @@
 ---
-title: "GIOS M10: Synchronization Constructs"
+title: "Synchronization Constructs"
 description: Module 10 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-07
 categories: [OMSCS, GIOS]

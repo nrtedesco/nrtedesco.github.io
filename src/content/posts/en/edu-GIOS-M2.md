@@ -1,5 +1,5 @@
 ---
-title: "GIOS M2: Processes"
+title: "Processes"
 description: Module 2 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-02
 categories: [OMSCS, GIOS]

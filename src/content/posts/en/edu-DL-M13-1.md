@@ -1,5 +1,5 @@
 ---
-title: "DL M13.1: Denoising Diffusion Probabilistic Models"
+title: "Denoising Diffusion Probabilistic Models"
 description: Supplement to Module 13 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-07
 categories: [OMSCS, DL]

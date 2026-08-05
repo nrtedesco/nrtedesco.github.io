@@ -1,5 +1,5 @@
 ---
-title: "GIOS M13: Remote Procedure Calls"
+title: "Remote Procedure Calls"
 description: Module 13 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-16
 categories: [OMSCS, GIOS]

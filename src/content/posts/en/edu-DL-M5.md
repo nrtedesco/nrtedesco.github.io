@@ -1,5 +1,5 @@
 ---
-title: "DL M5: Convolutional and Pooling Layers"
+title: "Convolutional and Pooling Layers"
 description: Module 5 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-13
 categories: [OMSCS, DL]

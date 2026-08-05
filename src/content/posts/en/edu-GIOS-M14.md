@@ -1,5 +1,5 @@
 ---
-title: "GIOS M14: Distributed File Systems"
+title: "Distributed File Systems"
 description: Module 14 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-11
 categories: [OMSCS, GIOS]

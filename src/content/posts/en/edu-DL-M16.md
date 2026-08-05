@@ -1,5 +1,5 @@
 ---
-title: "DL M16: Responsible AI"
+title: "Responsible AI"
 description: Module 16 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-25
 categories: [OMSCS, DL]

@@ -1,5 +1,5 @@
 ---
-title: "GIOS M1: Introduction to Operating Systems"
+title: "Introduction to Operating Systems"
 description: Module 1 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-01
 categories: [OMSCS, GIOS]

@@ -1,5 +1,5 @@
 ---
-title: "GIOS M8: Memory Management"
+title: "Memory Management"
 description: Module 8 of CS 6200 - Graduate Introduction to Operating Systems @ Georgia Tech. 
 pubDate: 2025-12-06
 categories: [OMSCS, GIOS]

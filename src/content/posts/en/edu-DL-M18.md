@@ -1,5 +1,5 @@
 ---
-title: "DL M18: Unsupervised and Semi-Supervised Learning"
+title: "Unsupervised and Semi-Supervised Learning"
 description: Module 18 of CS 7643 - Deep Learning @ Georgia Tech.
 pubDate: 2025-11-21
 categories: [OMSCS, DL]
