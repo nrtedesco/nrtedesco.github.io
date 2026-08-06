@@ -126,7 +126,9 @@ const pinnedItems = await getHomePins(locale);
           <span class="font-bold">Notes, Projects, and Blog Posts</span>
           <span class="text-muted-foreground">.</span>
         </h1>
-        <HomePinnedGrid pins={pinnedItems} locale={locale} />
+        <div class="pt-4">
+          <HomePinnedGrid pins={pinnedItems} locale={locale} />
+        </div>
       </div>
     </div>
   </div>
