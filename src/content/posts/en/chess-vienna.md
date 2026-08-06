@@ -263,13 +263,18 @@ After this more in-depth analysis, I see that forcing the Vienna Gambit is NOT a
 
 I've never played the Mieses Variation; I think I will continue this trend in the future, and opt to strengthen my play regarding other variations such as the Max Lange Defense (main line) and Falkbeer Stanley Variation. 
 
----
-Sources: 
+## Sources
 
-[Chess.com Master Game Explorer](https://support.chess.com/en/articles/8615183-what-is-the-game-explorer)
-[Vienna Game: Mieses Variation (Hanging Pawns)](https://www.youtube.com/watch?v=pj--06rHH5Q)
-[Vienna Game: Stanley Variation (Hanging Pawns)](https://www.youtube.com/watch?v=VW4gijHeJds)
-[Vienna Gambit (Hanging Pawns)](https://www.youtube.com/watch?v=NKeSyWouCPc&t=1315s)
-[Vienna Game: Max Lange Defense (Hanging Pawns)](https://www.youtube.com/watch?v=4jGu9nx_Xro)
-[Vienna Game: Anderssen Defense (Hanging Pawns)](https://www.youtube.com/watch?v=-eeyk6G5p0g)
+[Chess.com Master Game Explorer](https://support.chess.com/en/articles/8615183-what-is-the-game-explorer)  
+
+[Vienna Game: Mieses Variation (Hanging Pawns)](https://www.youtube.com/watch?v=pj--06rHH5Q)  
+
+[Vienna Game: Stanley Variation (Hanging Pawns)](https://www.youtube.com/watch?v=VW4gijHeJds)  
+
+[Vienna Gambit (Hanging Pawns)](https://www.youtube.com/watch?v=NKeSyWouCPc&t=1315s)  
+
+[Vienna Game: Max Lange Defense (Hanging Pawns)](https://www.youtube.com/watch?v=4jGu9nx_Xro)  
+
+[Vienna Game: Anderssen Defense (Hanging Pawns)](https://www.youtube.com/watch?v=-eeyk6G5p0g)  
+
 [lichess.org](https://lichess.org/study/YH37xr45)
