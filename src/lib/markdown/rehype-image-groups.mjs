@@ -18,17 +18,17 @@ function figureForImage(img, index = 0) {
   // collapses to 0×0, so later images never intersect the viewport and stay unloaded.
   img.properties.loading = 'eager';
   img.properties.decoding ||= 'async';
-  img.properties.className = ['h-full', 'w-full', 'cursor-zoom-in', 'object-cover'];
+  img.properties.className = ['block', 'h-auto', 'w-full', 'cursor-zoom-in'];
 
   const children = [
     {
       type: 'element',
       tagName: 'div',
       properties: {
-        // Match post cover: `--radius-card` on all four corners via overflow clip.
+        // Height follows the image's intrinsic ratio so short images don't leave
+        // empty space. `--radius-card` on all four corners via overflow clip.
         className: [
           'image-container',
-          'aspect-video',
           'w-full',
           'overflow-hidden',
           'rounded-[var(--radius-card)]'
