@@ -6,6 +6,7 @@ chapters:
   - en/edu-aws-ml-associate-s3
   - en/edu-aws-ml-associate-s4
   - en/edu-aws-ml-associate-s5
+  - en/edu-aws-ml-associate-s6
   - en/edu-aws-ml-associate-s7
 ---
 
