@@ -8,6 +8,7 @@ chapters:
   - en/edu-aws-ml-associate-s5
   - en/edu-aws-ml-associate-s6
   - en/edu-aws-ml-associate-s7
+  - en/edu-aws-ml-associate-s8
 ---
 
 [Course Link](https://www.udemy.com/course/aws-certified-machine-learning-engineer-associate-mla-c01/?couponCode=CP260817G1)
