@@ -9,6 +9,10 @@ chapters:
   - en/edu-aws-ml-associate-s6
   - en/edu-aws-ml-associate-s7
   - en/edu-aws-ml-associate-s8
+  - en/edu-aws-ml-associate-s9
+  - en/edu-aws-ml-associate-s10
 ---
 
 [Course Link](https://www.udemy.com/course/aws-certified-machine-learning-engineer-associate-mla-c01/?couponCode=CP260817G1)
+
+Sections 1 (Introduction) and 12 (Machine Learning Best Practices) excluded due to their brevity. 
