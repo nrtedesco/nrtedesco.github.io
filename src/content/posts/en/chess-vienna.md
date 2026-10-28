@@ -45,7 +45,8 @@ The main line of the Mieses continues with black initiating the knight trade. Wh
 
 <iframe width="600" height="371" src="https://lichess.org/study/embed/YH37xr45/y5JcL0yY#13" frameborder=0></iframe>
 
-Although there is much more to discuss regarding the Mieses Variation, I'd rather focus on other more aggressive lines! 
+Although there is much more to discuss regarding the Mieses Variation, I'd rather focus on other more aggressive lines!   
+
 #### Stanley Variation 
 
 As part of the *Vienna Falkbeer: Stanley Variation*, white brings out the kingside bishop to put added pressure on `d5`. 
@@ -68,7 +69,8 @@ The *Reversed Spanish Variation* requires black to develop their kingside bishop
 
 Finally, the *Bishop's Opening: Spielmann Attack* results from `3... Bc5  4. d3`. White should be prepared for black to respond with `c6` - this can lead to some very tricky lines! 
 
-<iframe width="600" height="371" src="https://lichess.org/study/embed/YH37xr45/I6hJIo90#7" frameborder=0></iframe>
+<iframe width="600" height="371" src="https://lichess.org/study/embed/YH37xr45/I6hJIo90#7" frameborder=0></iframe>   
+
 #### Falkbeer Vienna Gambit 
 
 After `2... Nf6`, white can opt for an aggressive opening with the *Vienna Gambit* by playing `3. f4`. The engine places white at a slight disadvantage in this position, but there are many opportunities for black to make a devastating mistake. 
@@ -138,7 +140,8 @@ White's best move is to immediately strike with `Qg4`. Black has to be careful i
 
 If black opts for a more informed defense, we set the foundation for a longer positional battle. 
 
-<iframe width="600" height="371" src="https://lichess.org/study/embed/YH37xr45/2ejHXEY2#13" frameborder=0></iframe>
+<iframe width="600" height="371" src="https://lichess.org/study/embed/YH37xr45/2ejHXEY2#13" frameborder=0></iframe>   
+
 #### Paulsen Variation 
 
 The *Paulsen Variation* is similar to the Falkbeer Mieses, and often transposes to Falkbeer lines. 
@@ -149,7 +152,8 @@ A safe response for black is to play `g6` and mirror the incoming kingside fianc
 
 The most common response from black is to bring out their dark square bishop with `Bc5`. White should respond by fianchettoing their light square bishop. White should play with the ultimate goal of forcing a pawn break with `f4`. 
 
-<iframe width="600" height="371" src="https://lichess.org/study/embed/YH37xr45/OxwRDPqi#17" frameborder=0></iframe>
+<iframe width="600" height="371" src="https://lichess.org/study/embed/YH37xr45/OxwRDPqi#17" frameborder=0></iframe>   
+
 #### Max Lange Vienna Gambit 
 
 As opposed to the Vienna Falkbeer, white may choose to play the *Vienna Gambit* within the context of the Max Lange Defense. 
@@ -194,7 +198,8 @@ If black plays `Nc6`, we transpose to the *Three Knights Opening*. White should 
 
 If black decides to play a more long-term move such as `d6`, Hanging Pawns recommends to force black to trade their dark square bishop for our knight. 
 
-<iframe width="600" height="371" src="https://lichess.org/study/embed/YH37xr45/DkyNlyGL#11" frameborder=0></iframe>
+<iframe width="600" height="371" src="https://lichess.org/study/embed/YH37xr45/DkyNlyGL#11" frameborder=0></iframe>  
+
 #### 3. Qh5
 
 Instead of `Nf3`, white may choose a trickier variation of the Anderssen Defense with `Qh5`. 
@@ -225,7 +230,8 @@ The best response to our gambit from black is `Ne7`, which is a very difficult m
 
 ## Section 4: Miscellaneous Moves 
 
-What if black doesn't follow our script for the Vienna? In this section, we will explore less commonly played responses by black on move 2. 
+What if black doesn't follow our script for the Vienna? In this section, we will explore less commonly played responses by black on move 2.    
+
 #### 2... d6
 
 Black may respond to the Vienna Game with `2... d6`, which is a move I've frequently encountered in the ~1400-1800 range on Chess.com. This move corresponds to 280 games at the master level. 
@@ -244,7 +250,8 @@ If black decides not to recapture, white should keep the tension in the center o
 
 <iframe width="600" height="371" src="https://lichess.org/study/embed/YH37xr45/4PqW5nED#9" frameborder=0></iframe>
 
-Overall, the engine has most lines for `2... d6` as fairly equal, so be prepared for a long-term positional battle. 
+Overall, the engine has most lines for `2... d6` as fairly equal, so be prepared for a long-term positional battle.  
+
 #### `2... Bb4`
 
 Finally, the fifth-most common response for black at the master level is to strike our knight in Ruy Lopez fashion with the move `2... Bb4`. 
